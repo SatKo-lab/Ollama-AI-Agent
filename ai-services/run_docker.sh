@@ -34,7 +34,7 @@ action=$1
 shift
 
 # Check if action is valid
-if [[ "$action" != "build" && "$action" != "run" && "$action" != "both" ]]; then
+if [[ "$action" != "build" && "$action" != "run" && "$action" != "both" && "$action" != "ai-git-runner" ]]; then
     echo "Error: Invalid action '$action'."
     echo "Use --help for usage information."
     exit 1
@@ -53,5 +53,9 @@ case $action in
     both)
         echo "Building and running services: $@"
         docker-compose up --build "$@"
+        ;;
+    ai-git-runner)
+        echo "Launch Git Runner services: $@"
+        docker-compose up --build --scale ai-git-runner="$@" -d
         ;;
 esac

@@ -1,0 +1,6 @@
+**
+!./scripts
+!Dockerfile
+.env
+.git
+.gitignore

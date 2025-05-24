@@ -28,6 +28,18 @@ services:
     network_mode: bridge
     restart: unless-stopped
 
+  ai-git-runner:
+    image: ai-github-runner-linux:latest
+    platform: linux/amd64
+    #container_name: ai-git-runner
+    build:
+      context: ./git-runner
+      dockerfile: Dockerfile
+      args:
+        RUNNER_VERSION: '2.324.0'
+    env_file:
+      - ./git-runner/.env
+
 volumes:
   ollama: {}
   open-webui-data: {}

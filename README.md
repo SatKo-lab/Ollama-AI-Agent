@@ -61,7 +61,7 @@ openwebui:
 
 Qodo ( formerly Codium ) is a PR agent that can help with code reviews and merging pull requests. It's available at https://www.qodo.ai/products/qodo-merge/
 
-### How to use Qodo ?
+### How to use Qodo (PR Agent)?
 - Using CLI or Docker ( Local )
 
 ```
