@@ -1,5 +1,7 @@
 # Ollama-AI-Agent
 
+
+
 ## Setup Ollama
 
 Visit https://ollama.com/
@@ -59,20 +61,47 @@ openwebui:
 
 ## Setting up PR Agent with QODO
 
-Qodo ( formerly Codium ) is a PR agent that can help with code reviews and merging pull requests. It's available at https://www.qodo.ai/products/qodo-merge/
+Qodo ( formerly Codium ) is a PR agent that can help with code reviews and merging pull requests. 
+
+It's available at https://www.qodo.ai/products/qodo-merge/
+
+
 
 ### How to use Qodo (PR Agent)?
-- Using CLI or Docker ( Local )
+
+#### Using CLI ( Local )
+
+Requires installing `pr-agent>=0.2.7` in your python environment.
 
 ```
+python3 -m pr_agent.cli \
+  --pr_url <link to your pr> \
+  "ask" \
+  "write me a poem about this PR"
+```
+#### Using Docker ( Local )
+```
 docker run --rm -it --network host --env-file <env file> 
-        $DOCKER_IMAGE --pr_url 
+        codiumai/pr-agent:latest --pr_url <link to your pr>
 ```
 
 Fill up .env files to use github api token and other necessary details relevant for local ollama deployment.
 
-- Using GitHub Actions ( Production )
+#### Using GitHub Actions ( Production )
 
+## Setting up Git Runner
+
+- Follow the instructions from github
+  - You need organization account to setup self hosted git runners
+- Conveinent to have containerized Git Runner. Deploy locally from docker compose for local testing.
+- Runner should have access to ollama server. Essentially they all should be in the same network.
+
+
+## Overview
+
+![Architecture Diagram](docs/architecture-diagram.png)
+
+High-level architecture of the Ollama-AI-Agent setup, including Ollama, OpenWebUI, CLI/Docker PR Agent App.
 
 ## Extra stuff
 ### Continue - A VSCode Extenstion
