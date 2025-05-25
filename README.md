@@ -4,8 +4,8 @@
 
 Visit https://ollama.com/
 
+- Docker ( with GPU Acceleration )
 - Standalone Ollama CLI tools ( Better for MAC )
-- or Docker ( with GPU Acceleration )
 - Plenty of models to choose from
     - For this demo `qwen2.5-coder` will be used
     - Library https://ollama.com/library/qwen2.5-coder
