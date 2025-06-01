@@ -28,6 +28,16 @@ services:
     network_mode: bridge
     restart: unless-stopped
 
+  docker-daemon:
+    container_name: "ai-docker-daemon"
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    image: "docker:dind"
+    networks:
+      "dind-network":
+        aliases:
+          - "docker"
+    privileged: true
   ai-git-runner:
     image: ai-github-runner-linux:latest
     platform: linux/amd64
@@ -39,7 +49,21 @@ services:
         RUNNER_VERSION: '2.324.0'
     env_file:
       - ./git-runner/.env
+    depends_on:
+      - "docker-daemon"
+    environment:
+      DOCKER_HOST: "tcp://docker:2375"
+      DIND_USER_HOME: "/home/docker/actions-runner"
+    volumes:
+      - runner-data:/home/docker/actions-runner
+    networks:
+      "dind-network": {}
 
 volumes:
   ollama: {}
   open-webui-data: {}
+  runner-data: {}
+
+networks:
+  "dind-network":
+    name: "dind-network"

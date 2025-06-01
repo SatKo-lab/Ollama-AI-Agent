@@ -3,7 +3,7 @@
 
 DOCKER_IMAGE="codiumai/pr-agent:latest"
 PR_URL="https://github.com/icomdev/ARC/pull/404"
-PR_URL="https://github.com/SatKo-lab/Test_PR_Agent/pull/1"
+PR_URL="https://github.com/SatKo-lab/Test_PR_Agent/pull/5"
 
 
 promt0="ask the author to add a test for this PR"

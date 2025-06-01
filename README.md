@@ -96,6 +96,21 @@ Fill up .env files to use github api token and other necessary details relevant 
 - Conveinent to have containerized Git Runner. Deploy locally from docker compose for local testing.
 - Runner should have access to ollama server. Essentially they all should be in the same network.
 
+### Useful references for git runner setup:
+
+# AI Git Runner
+
+- https://dev.to/pwd9000/create-a-docker-based-self-hosted-github-runner-linux-container-48dh
+- https://baccini-al.medium.com/how-to-containerize-a-github-actions-self-hosted-runner-5994cc08b9fb
+
+# DockerInDocker (dind) for Mac environment
+
+Why? Because Git runners running as docker container, should have the capability to run docker from within the docker container.
+How? 
+For Mac, See this link - https://www.saltycrane.com/blog/2021/04/how-run-docker-docker-mac/
+
+https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
+
 
 ## Overview
 
@@ -104,10 +119,15 @@ Fill up .env files to use github api token and other necessary details relevant 
 High-level architecture of the Ollama-AI-Agent setup, including Ollama, OpenWebUI, CLI/Docker PR Agent App.
 
 ## Extra stuff
+
 ### Continue - A VSCode Extenstion
 
 - https://marketplace.visualstudio.com/items?itemName=Continue.continue
 - Configure VSCode to use the Continue extension for auto completion, chat etc
+
+
+
+
 
 
 

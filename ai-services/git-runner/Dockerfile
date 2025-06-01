@@ -1,4 +1,3 @@
-
 FROM ubuntu:25.10
 
 ARG RUNNER_VERSION="2.324.0"
@@ -8,7 +7,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y && apt upgrade -y && useradd -m docker
 RUN apt install -y --no-install-recommends \
-    curl jq build-essential libssl-dev libffi-dev libicu-dev python3 python3-venv python3-dev python3-pip
+    curl jq build-essential libssl-dev libffi-dev libicu-dev python3 python3-venv python3-dev python3-pip unzip docker.io
+
 
 WORKDIR /home/docker
 
@@ -25,6 +25,16 @@ COPY scripts/start.sh start.sh
 
 # make the script executable
 RUN chmod +x start.sh
+
+# https://docs.astral.sh/uv/guides/integration/docker/#installing-uv   
+# ADD https://astral.sh/uv/0.7.8/install.sh /home/docker/uv-installer.sh
+# RUN chmod +x /home/docker/uv-installer.sh
+# RUN sh /home/docker/uv-installer.sh | env UV_INSTALL_DIR="/home/docker" && rm /home/docker/uv-installer.sh
+
+# # Ensure the installed binary is on the `PATH`
+# ENV PATH="/home/docker/:$PATH"
+
+#RUN uv --RUNNER_VERSION
 
 # since the config and run script for actions are not allowed to be run by root,
 # set the user to "docker" so all subsequent commands are run as the docker user
